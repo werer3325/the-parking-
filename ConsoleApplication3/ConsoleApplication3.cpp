@@ -12,14 +12,33 @@ int main(void)
 
     printf("Entry time:");
     scanf_s("%d:%d", &entry_hour, &entry_min);
-    if (entry_hour < 0 || entry_hour >24 || entry_min < 0 || entry_min > 59){
-        printf(" invalid Coice ");
+    if (entry_hour < 0 || entry_hour >23 || entry_min < 0 || entry_min > 59){
+        printf(" invalid time\n ");
         return 0; 
     }
+    printf("exit time:");
+    scanf_s("%d:%d", &exit_hour, &exit_min);
+    if ( exit_hour < 0 || exit_hour > 23 || exit_min < 0 || exit_min >59) {
+        printf("invalid time\n");
+           return 0;
+     }
+
+    int entry_total = entry_hour * 60 + entry_min;
+    int exit_total = exit_hour * 60 + exit_min;
+    if (entry_total > exit_total) {
+        printf("invalid time\n");
+        return 0;
+    }
+    duration = exit_total - entry_total;
+    printf("time total : %d", duration);
     
 
-
+    fee =( (duration / 15 )- 1) * 4;
+    
+    printf("fee to pai: %d",fee);
 }
+
+
 
 // Programm ausführen: STRG+F5 oder Menüeintrag "Debuggen" > "Starten ohne Debuggen starten"
 // Programm debuggen: F5 oder "Debuggen" > Menü "Debuggen starten"
